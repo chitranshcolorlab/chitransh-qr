@@ -1,0 +1,13 @@
+CHITRANSH ROOT FIXED VERSION
+
+1. Extract this ZIP.
+2. Open the repository home:
+   https://github.com/chitranshcolorlab/chitransh-qr
+3. Click Add file > Upload files.
+4. Upload ALL extracted files together into the repository ROOT.
+5. Do not open or create any assets folder.
+6. Commit changes directly to main.
+7. Wait 1-3 minutes and open:
+   https://chitranshcolorlab.github.io/chitransh-qr/
+
+This version works with every website file in the root folder.
