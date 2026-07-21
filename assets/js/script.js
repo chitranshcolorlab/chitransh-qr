@@ -85,8 +85,8 @@ if ("serviceWorker" in navigator) {
 // V5 cinematic hero playlist: six wedding reels followed by four pre-wedding reels.
 const heroPlaylist = [
   { src: "assets/videos/wedding/wedding-01.mp4", label: "Wedding Stories · 01 / 06" },
-  { src: "assets/videos/wedding/wedding-02.mp4", label: "Wedding Stories · 02 / 06" },
-  { src: "assets/videos/wedding/wedding-03.mp4", label: "Wedding Stories · 03 / 06" },
+  { src: "assets/videos/wedding/wedding-03.mp4", label: "Wedding Stories · 02 / 06" },
+  { src: "assets/videos/wedding/wedding-02.mp4", label: "Wedding Stories · 03 / 06" },
   { src: "assets/videos/wedding/wedding-04.mp4", label: "Wedding Stories · 04 / 06" },
   { src: "assets/videos/wedding/wedding-05.mp4", label: "Wedding Stories · 05 / 06" },
   { src: "assets/videos/wedding/wedding-06.mp4", label: "Wedding Stories · 06 / 06" },

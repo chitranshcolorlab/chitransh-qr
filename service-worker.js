@@ -1,4 +1,4 @@
-const CACHE = 'chitransh-v5-ultimate-20260721';
+const CACHE = 'chitransh-v5-update-20260721b';
 const CORE = [
   './', './index.html', './manifest.json', './contact.vcf',
   './assets/css/style.css', './assets/js/script.js',
