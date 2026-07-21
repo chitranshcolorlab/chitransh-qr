@@ -1,16 +1,6 @@
-# CHITRANSH QR — Ready Project
+# Chitransh Color Lab — V5 Ultimate
+GitHub Pages-ready luxury wedding photography website for Chitransh Color Lab, Didwana.
 
-## Upload to GitHub
-1. Open: https://github.com/chitranshcolorlab/chitransh-qr
-2. Click **Add file → Upload files**.
-3. Extract this ZIP on your computer.
-4. Upload **all files and the assets folder** from `CHITRANSH-QR-READY`.
-5. Choose **Commit directly to the main branch** and click **Commit changes**.
-6. Wait 1–3 minutes, then open:
-   https://chitranshcolorlab.github.io/chitransh-qr/
+Repository target: `chitranshcolorlab/chitransh-qr`
 
-## Important
-- Upload the *contents* of the folder, not the outer folder itself.
-- Replace existing `index.html` when GitHub asks.
-- Keep `assets/hero-video.mp4` for the cinematic homepage.
-- QR image points to the GitHub Pages website.
+Includes 10 cinematic hero reels (6 Wedding + 4 Pre-Wedding), Founder section, 20-image portfolio, Since 1960, 25+ years personal experience, 1000+ weddings, WhatsApp booking, social links, Google Drive portfolio and PWA support.
