@@ -1,0 +1,16 @@
+CHITRANSH WEBSITE V4 LUXURY
+
+Included:
+- Smaller, cleaner glass header
+- Larger logo and improved brand spacing
+- Premium hero overlay and typography
+- Portfolio category chips
+- Stronger legacy/about section
+- 4 floating buttons: Maps, Instagram, Call, WhatsApp
+- Luxury multi-column footer
+- Responsive mobile improvements
+
+Upload all extracted files to the repository ROOT:
+https://github.com/chitranshcolorlab/chitransh-qr
+
+Then commit directly to main, wait 1-3 minutes, and press Ctrl + F5.
