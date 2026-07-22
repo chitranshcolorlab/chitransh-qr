@@ -51,7 +51,7 @@
       <h1>Every Love Story<br><span>Deserves a Masterpiece.</span></h1>
       <p class="hero-copy">Cinematic wedding films, candid photography and timeless portraits—backed by a family photography legacy since 1960 and 25+ years of personal experience.</p>
       <div class="hero-actions">
-        <a class="btn btn-gold" href="https://wa.me/919828783400?text=Hello%20Chitransh%20Color%20Lab%2C%20I%20want%20to%20book%20a%20photoshoot.%20Please%20share%20your%20packages." target="_blank" rel="noopener">Book Consultation</a>
+        <button class="btn btn-gold booking-trigger" type="button">Book Consultation</button>
         <a class="btn btn-ghost" href="#portfolio">View Portfolio</a>
         <a class="btn btn-outline-gold" href="https://drive.google.com/drive/folders/1NJlgUZZxlX_rQMlW0SKt1q_JaykW8_qI?usp=sharing" target="_blank" rel="noopener">Full Drive Portfolio</a>
       </div>
@@ -197,6 +197,7 @@
           <a href="mailto:sharadmn29@gmail.com">Email Us</a>
           <a href="https://maps.app.goo.gl/LsheYX7BAQJezTyw6" target="_blank" rel="noopener">Open Google Maps</a>
         </div>
+        <button class="btn btn-gold availability-btn booking-trigger" type="button">Check Availability</button>
         <button class="btn btn-ghost install-btn" id="installButton" hidden>Install Chitransh App</button>
       </div>
     </section>
@@ -238,6 +239,65 @@
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Portfolio image viewer">
     <button id="lightboxClose" aria-label="Close image">×</button>
     <img id="lightboxImage" alt="Chitransh Color Lab portfolio enlarged">
+  </div>
+
+  <div class="booking-modal" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="bookingTitle" aria-hidden="true">
+    <div class="booking-dialog" role="document">
+      <button class="booking-close" id="bookingClose" type="button" aria-label="Close booking enquiry">&times;</button>
+      <div class="booking-intro">
+        <p class="eyebrow">Plan your celebration</p>
+        <h2 id="bookingTitle">Check your date</h2>
+        <p>Share a few details and we’ll continue your enquiry personally on WhatsApp.</p>
+      </div>
+      <form class="booking-form" id="bookingForm">
+        <div class="form-grid">
+          <label class="form-field">Full Name <span aria-hidden="true">*</span>
+            <input type="text" name="fullName" autocomplete="name" required>
+          </label>
+          <label class="form-field">Mobile Number <span aria-hidden="true">*</span>
+            <input type="tel" name="mobile" autocomplete="tel" inputmode="tel" required>
+          </label>
+          <label class="form-field">Event Date
+            <input type="date" name="eventDate">
+          </label>
+          <label class="form-field">Event Type
+            <select name="eventType">
+              <option value="">Select event type</option>
+              <option>Wedding</option><option>Pre-Wedding</option><option>Engagement</option>
+              <option>Maternity</option><option>Baby Shoot</option><option>Corporate</option><option>Other</option>
+            </select>
+          </label>
+          <label class="form-field form-wide">Venue / City
+            <input type="text" name="venue" autocomplete="address-level2">
+          </label>
+        </div>
+
+        <fieldset class="services-fieldset">
+          <legend>Required Services</legend>
+          <div class="service-options">
+            <label><input type="checkbox" name="services" value="Traditional Photography"><span>Traditional Photography</span></label>
+            <label><input type="checkbox" name="services" value="Candid Photography"><span>Candid Photography</span></label>
+            <label><input type="checkbox" name="services" value="Videography"><span>Videography</span></label>
+            <label><input type="checkbox" name="services" value="Cinematic Film"><span>Cinematic Film</span></label>
+            <label><input type="checkbox" name="services" value="Drone Coverage"><span>Drone Coverage</span></label>
+            <label><input type="checkbox" name="services" value="Same-Day Edit"><span>Same-Day Edit</span></label>
+            <label><input type="checkbox" name="services" value="Premium Album"><span>Premium Album</span></label>
+          </div>
+        </fieldset>
+
+        <label class="form-field">Estimated Budget
+          <select name="budget">
+            <option value="">Select estimated budget</option>
+            <option>Under ₹50,000</option><option>₹50,000–₹1,00,000</option>
+            <option>₹1,00,000–₹2,00,000</option><option>Above ₹2,00,000</option><option>Need Consultation</option>
+          </select>
+        </label>
+        <label class="form-field">Additional Message
+          <textarea name="message" rows="4"></textarea>
+        </label>
+        <button class="btn btn-gold booking-submit" type="submit">Send Enquiry on WhatsApp</button>
+      </form>
+    </div>
   </div>
 
   <div class="toast" id="toast">Link copied</div>

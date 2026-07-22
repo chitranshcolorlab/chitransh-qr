@@ -42,6 +42,69 @@ $("#lightboxClose")?.addEventListener("click", closeLightbox);
 lightbox?.addEventListener("click", e => { if(e.target === lightbox) closeLightbox(); });
 document.addEventListener("keydown", e => { if(e.key === "Escape") closeLightbox(); });
 
+const bookingModal = $("#bookingModal");
+const bookingForm = $("#bookingForm");
+const bookingClose = $("#bookingClose");
+let bookingReturnFocus = null;
+
+function openBookingModal(trigger) {
+  bookingReturnFocus = trigger;
+  bookingModal.classList.add("open");
+  bookingModal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  setTimeout(() => bookingForm.elements.fullName.focus(), 50);
+}
+
+function closeBookingModal() {
+  if (!bookingModal.classList.contains("open")) return;
+  bookingModal.classList.remove("open");
+  bookingModal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+  bookingReturnFocus?.focus();
+}
+
+$$('.booking-trigger').forEach(trigger => trigger.addEventListener("click", () => openBookingModal(trigger)));
+bookingClose?.addEventListener("click", closeBookingModal);
+bookingModal?.addEventListener("click", e => { if (e.target === bookingModal) closeBookingModal(); });
+
+bookingModal?.addEventListener("keydown", e => {
+  if (e.key === "Escape") {
+    e.preventDefault();
+    closeBookingModal();
+    return;
+  }
+  if (e.key !== "Tab") return;
+  const focusable = [...bookingModal.querySelectorAll('button, input, select, textarea, [href], [tabindex]:not([tabindex="-1"])')]
+    .filter(el => !el.disabled && el.offsetParent !== null);
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+});
+
+bookingForm?.addEventListener("submit", e => {
+  e.preventDefault();
+  if (!bookingForm.reportValidity()) return;
+  const data = new FormData(bookingForm);
+  const services = data.getAll("services").join(", ") || "Not specified";
+  const value = name => String(data.get(name) || "Not specified").trim() || "Not specified";
+  const message = `Hello Chitransh Color Lab,
+
+I would like to check availability for my event.
+
+Name: ${value("fullName")}
+Mobile: ${value("mobile")}
+Event Date: ${value("eventDate")}
+Event Type: ${value("eventType")}
+Venue / City: ${value("venue")}
+Required Services: ${services}
+Estimated Budget: ${value("budget")}
+Additional Message: ${value("message")}
+
+Please share the available photography options and quotation.`;
+  window.open(`https://wa.me/919828783400?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+});
+
 const toast = $("#toast");
 function showToast(text){
   toast.textContent = text;
