@@ -1,7 +1,7 @@
-const CACHE = 'chitransh-v6-booking-20260722';
+const CACHE = 'chitransh-v7-modal-fix-20260722';
 const CORE = [
   './', './index.html', './manifest.json', './contact.vcf',
-  './assets/css/style.css', './assets/js/script.js',
+  './assets/css/style.css?v=20260722-modal-fix', './assets/js/script.js?v=20260722-modal-fix',
   './assets/images/branding/logo.png', './assets/images/branding/hero.webp',
   './assets/images/founder/sharad-mathur.png',
   './assets/icons/icon-192.png', './assets/icons/icon-512.png'

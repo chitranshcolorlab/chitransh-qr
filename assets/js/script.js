@@ -46,12 +46,17 @@ const bookingModal = $("#bookingModal");
 const bookingForm = $("#bookingForm");
 const bookingClose = $("#bookingClose");
 let bookingReturnFocus = null;
+let bookingHideTimer = null;
+let bookingPreviousOverflow = "";
 
 function openBookingModal(trigger) {
+  clearTimeout(bookingHideTimer);
   bookingReturnFocus = trigger;
-  bookingModal.classList.add("open");
+  bookingPreviousOverflow = document.body.style.overflow;
+  bookingModal.hidden = false;
   bookingModal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
+  requestAnimationFrame(() => bookingModal.classList.add("open"));
   setTimeout(() => bookingForm.elements.fullName.focus(), 50);
 }
 
@@ -59,8 +64,11 @@ function closeBookingModal() {
   if (!bookingModal.classList.contains("open")) return;
   bookingModal.classList.remove("open");
   bookingModal.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
+  document.body.style.overflow = bookingPreviousOverflow;
   bookingReturnFocus?.focus();
+  bookingHideTimer = setTimeout(() => {
+    if (!bookingModal.classList.contains("open")) bookingModal.hidden = true;
+  }, 300);
 }
 
 $$('.booking-trigger').forEach(trigger => trigger.addEventListener("click", () => openBookingModal(trigger)));
