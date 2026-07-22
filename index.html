@@ -14,7 +14,7 @@
   <link rel="icon" href="assets/icons/icon-192.png">
   <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
   <link rel="preload" href="assets/images/branding/hero.webp" as="image">
-  <link rel="stylesheet" href="assets/css/style.css?v=20260722-modal-fix">
+  <link rel="stylesheet" href="assets/css/style.css?v=20260722-modal-rebuild">
 </head>
 <body>
   <div class="loader" id="loader" aria-hidden="true">
@@ -51,7 +51,7 @@
       <h1>Every Love Story<br><span>Deserves a Masterpiece.</span></h1>
       <p class="hero-copy">Cinematic wedding films, candid photography and timeless portraits—backed by a family photography legacy since 1960 and 25+ years of personal experience.</p>
       <div class="hero-actions">
-        <button class="btn btn-gold booking-trigger" type="button">Book Consultation</button>
+        <button class="btn btn-gold" type="button" data-enquiry-open>Book Consultation</button>
         <a class="btn btn-ghost" href="#portfolio">View Portfolio</a>
         <a class="btn btn-outline-gold" href="https://drive.google.com/drive/folders/1NJlgUZZxlX_rQMlW0SKt1q_JaykW8_qI?usp=sharing" target="_blank" rel="noopener">Full Drive Portfolio</a>
       </div>
@@ -197,7 +197,7 @@
           <a href="mailto:sharadmn29@gmail.com">Email Us</a>
           <a href="https://maps.app.goo.gl/LsheYX7BAQJezTyw6" target="_blank" rel="noopener">Open Google Maps</a>
         </div>
-        <button class="btn btn-gold availability-btn booking-trigger" type="button">Check Availability</button>
+        <button class="btn btn-gold availability-btn" type="button" data-enquiry-open>Check Availability</button>
         <button class="btn btn-ghost install-btn" id="installButton" hidden>Install Chitransh App</button>
       </div>
     </section>
@@ -241,40 +241,43 @@
     <img id="lightboxImage" alt="Chitransh Color Lab portfolio enlarged">
   </div>
 
-  <div class="booking-modal" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="bookingTitle" aria-hidden="true" hidden>
-    <div class="booking-dialog" role="document">
-      <button class="booking-close" id="bookingClose" type="button" aria-label="Close booking enquiry">&times;</button>
-      <div class="booking-intro">
+  <div class="toast" id="toast">Link copied</div>
+  <script defer src="assets/js/script.js?v=20260722-modal-rebuild"></script>
+
+  <div class="enquiry-overlay" id="enquiryOverlay" role="dialog" aria-modal="true" aria-labelledby="enquiryHeading" aria-hidden="true">
+    <div class="enquiry-panel" role="document">
+      <button class="enquiry-close" id="enquiryClose" type="button" aria-label="Close booking enquiry">&times;</button>
+      <div class="enquiry-header">
         <p class="eyebrow">Plan your celebration</p>
-        <h2 id="bookingTitle">Check your date</h2>
+        <h2 id="enquiryHeading">Check your date</h2>
         <p>Share a few details and we’ll continue your enquiry personally on WhatsApp.</p>
       </div>
-      <form class="booking-form" id="bookingForm">
-        <div class="form-grid">
-          <label class="form-field">Full Name <span aria-hidden="true">*</span>
+      <form class="enquiry-form" id="enquiryForm">
+        <div class="enquiry-grid">
+          <label class="enquiry-field">Full Name <span aria-hidden="true">*</span>
             <input type="text" name="fullName" autocomplete="name" required>
           </label>
-          <label class="form-field">Mobile Number <span aria-hidden="true">*</span>
+          <label class="enquiry-field">Mobile Number <span aria-hidden="true">*</span>
             <input type="tel" name="mobile" autocomplete="tel" inputmode="tel" required>
           </label>
-          <label class="form-field">Event Date
+          <label class="enquiry-field">Event Date
             <input type="date" name="eventDate">
           </label>
-          <label class="form-field">Event Type
+          <label class="enquiry-field">Event Type
             <select name="eventType">
               <option value="">Select event type</option>
               <option>Wedding</option><option>Pre-Wedding</option><option>Engagement</option>
               <option>Maternity</option><option>Baby Shoot</option><option>Corporate</option><option>Other</option>
             </select>
           </label>
-          <label class="form-field form-wide">Venue / City
+          <label class="enquiry-field enquiry-wide">Venue / City
             <input type="text" name="venue" autocomplete="address-level2">
           </label>
         </div>
 
-        <fieldset class="services-fieldset">
+        <fieldset class="enquiry-services">
           <legend>Required Services</legend>
-          <div class="service-options">
+          <div class="enquiry-options">
             <label><input type="checkbox" name="services" value="Traditional Photography"><span>Traditional Photography</span></label>
             <label><input type="checkbox" name="services" value="Candid Photography"><span>Candid Photography</span></label>
             <label><input type="checkbox" name="services" value="Videography"><span>Videography</span></label>
@@ -285,22 +288,19 @@
           </div>
         </fieldset>
 
-        <label class="form-field">Estimated Budget
+        <label class="enquiry-field">Estimated Budget
           <select name="budget">
             <option value="">Select estimated budget</option>
             <option>Under ₹50,000</option><option>₹50,000–₹1,00,000</option>
             <option>₹1,00,000–₹2,00,000</option><option>Above ₹2,00,000</option><option>Need Consultation</option>
           </select>
         </label>
-        <label class="form-field">Additional Message
+        <label class="enquiry-field">Additional Message
           <textarea name="message" rows="4"></textarea>
         </label>
-        <button class="btn btn-gold booking-submit" type="submit">Send Enquiry on WhatsApp</button>
+        <button class="btn btn-gold enquiry-submit" type="submit">Send Enquiry on WhatsApp</button>
       </form>
     </div>
   </div>
-
-  <div class="toast" id="toast">Link copied</div>
-  <script src="assets/js/script.js?v=20260722-modal-fix"></script>
 </body>
 </html>

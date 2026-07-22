@@ -42,58 +42,38 @@ $("#lightboxClose")?.addEventListener("click", closeLightbox);
 lightbox?.addEventListener("click", e => { if(e.target === lightbox) closeLightbox(); });
 document.addEventListener("keydown", e => { if(e.key === "Escape") closeLightbox(); });
 
-const bookingModal = $("#bookingModal");
-const bookingForm = $("#bookingForm");
-const bookingClose = $("#bookingClose");
-let bookingReturnFocus = null;
-let bookingHideTimer = null;
-let bookingPreviousOverflow = "";
+const enquiryOverlay = $("#enquiryOverlay");
+const enquiryForm = $("#enquiryForm");
+const enquiryClose = $("#enquiryClose");
+let enquiryReturnFocus = null;
+let enquiryPreviousOverflow = "";
 
-function openBookingModal(trigger) {
-  clearTimeout(bookingHideTimer);
-  bookingReturnFocus = trigger;
-  bookingPreviousOverflow = document.body.style.overflow;
-  bookingModal.hidden = false;
-  bookingModal.setAttribute("aria-hidden", "false");
+function openEnquiry(trigger) {
+  enquiryReturnFocus = trigger;
+  enquiryPreviousOverflow = document.body.style.overflow;
+  enquiryOverlay.classList.add("is-open");
+  enquiryOverlay.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
-  requestAnimationFrame(() => bookingModal.classList.add("open"));
-  setTimeout(() => bookingForm.elements.fullName.focus(), 50);
+  enquiryForm.elements.fullName.focus();
 }
 
-function closeBookingModal() {
-  if (!bookingModal.classList.contains("open")) return;
-  bookingModal.classList.remove("open");
-  bookingModal.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = bookingPreviousOverflow;
-  bookingReturnFocus?.focus();
-  bookingHideTimer = setTimeout(() => {
-    if (!bookingModal.classList.contains("open")) bookingModal.hidden = true;
-  }, 300);
+function closeEnquiry() {
+  if (!enquiryOverlay.classList.contains("is-open")) return;
+  enquiryOverlay.classList.remove("is-open");
+  enquiryOverlay.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = enquiryPreviousOverflow;
+  enquiryReturnFocus?.focus();
 }
 
-$$('.booking-trigger').forEach(trigger => trigger.addEventListener("click", () => openBookingModal(trigger)));
-bookingClose?.addEventListener("click", closeBookingModal);
-bookingModal?.addEventListener("click", e => { if (e.target === bookingModal) closeBookingModal(); });
+$$('[data-enquiry-open]').forEach(trigger => trigger.addEventListener("click", () => openEnquiry(trigger)));
+enquiryClose?.addEventListener("click", closeEnquiry);
+enquiryOverlay?.addEventListener("click", e => { if (e.target === enquiryOverlay) closeEnquiry(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeEnquiry(); });
 
-bookingModal?.addEventListener("keydown", e => {
-  if (e.key === "Escape") {
-    e.preventDefault();
-    closeBookingModal();
-    return;
-  }
-  if (e.key !== "Tab") return;
-  const focusable = [...bookingModal.querySelectorAll('button, input, select, textarea, [href], [tabindex]:not([tabindex="-1"])')]
-    .filter(el => !el.disabled && el.offsetParent !== null);
-  const first = focusable[0];
-  const last = focusable[focusable.length - 1];
-  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-});
-
-bookingForm?.addEventListener("submit", e => {
+enquiryForm?.addEventListener("submit", e => {
   e.preventDefault();
-  if (!bookingForm.reportValidity()) return;
-  const data = new FormData(bookingForm);
+  if (!enquiryForm.reportValidity()) return;
+  const data = new FormData(enquiryForm);
   const services = data.getAll("services").join(", ") || "Not specified";
   const value = name => String(data.get(name) || "Not specified").trim() || "Not specified";
   const message = `Hello Chitransh Color Lab,
