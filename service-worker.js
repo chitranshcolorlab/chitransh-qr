@@ -1,7 +1,7 @@
-const CACHE = 'chitransh-v8-modal-rebuild-20260722';
+const CACHE = 'chitransh-v9-seo-20260725';
 const CORE = [
-  './', './index.html', './manifest.json', './contact.vcf',
-  './assets/css/style.css?v=20260722-modal-rebuild', './assets/js/script.js?v=20260722-modal-rebuild',
+  './', './index.html', './manifest.json', './contact.vcf', './robots.txt', './sitemap.xml',
+  './assets/css/style.css?v=20260725-seo', './assets/js/script.js?v=20260725-seo',
   './assets/images/branding/logo.png', './assets/images/branding/hero.webp',
   './assets/images/founder/sharad-mathur.png',
   './assets/icons/icon-192.png', './assets/icons/icon-512.png'
