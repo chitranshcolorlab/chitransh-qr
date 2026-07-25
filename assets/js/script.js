@@ -90,6 +90,12 @@ Estimated Budget: ${value("budget")}
 Additional Message: ${value("message")}
 
 Please share the available photography options and quotation.`;
+  trackEvent("generate_lead", {
+    event_type: value("eventType"),
+    selected_services: services,
+    budget_range: value("budget"),
+    method: "whatsapp_enquiry_form"
+  });
   window.open(`https://wa.me/919828783400?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
 });
 
@@ -106,10 +112,13 @@ $("#shareButton")?.addEventListener("click", async () => {
     url: location.href
   };
   try {
-    if (navigator.share) await navigator.share(data);
-    else {
+    if (navigator.share) {
+      await navigator.share(data);
+      trackEvent("share_business", { method: "native_share" });
+    } else {
       await navigator.clipboard.writeText(location.href);
       showToast("Website link copied");
+      trackEvent("share_business", { method: "clipboard" });
     }
   } catch (e) {}
 });
@@ -165,3 +174,38 @@ function playHero(index) {
 }
 heroVideo?.addEventListener("ended", () => playHero(heroIndex + 1));
 heroVideo?.addEventListener("error", () => playHero(heroIndex + 1));
+
+
+// Google Analytics 4 custom business-action tracking.
+function trackEvent(eventName, parameters = {}) {
+  if (typeof window.gtag !== "function") return;
+  window.gtag("event", eventName, {
+    ...parameters,
+    page_location: window.location.href,
+    transport_type: "beacon"
+  });
+}
+
+function linkLabel(link) {
+  return (link.getAttribute("aria-label") || link.textContent || "").replace(/\s+/g, " ").trim().slice(0, 100);
+}
+
+document.addEventListener("click", event => {
+  const link = event.target.closest("a[href]");
+  if (!link) return;
+  const href = link.getAttribute("href") || "";
+  const common = { link_url: link.href, link_text: linkLabel(link) };
+
+  if (href.startsWith("tel:")) trackEvent("call_click", common);
+  else if (href.includes("wa.me/") || href.includes("whatsapp.com/")) trackEvent("whatsapp_click", common);
+  else if (href.includes("g.page/") || href.includes("writereview")) trackEvent("google_review_click", common);
+  else if (href.includes("maps.app.goo.gl") || href.includes("google.com/maps")) trackEvent("google_maps_click", common);
+  else if (href.endsWith("contact.vcf") || link.hasAttribute("download")) trackEvent("save_contact_click", common);
+  else if (href.includes("drive.google.com")) trackEvent("portfolio_click", common);
+  else if (href.includes("instagram.com")) trackEvent("instagram_click", common);
+  else if (href.includes("youtube.com") || href.includes("youtu.be")) trackEvent("youtube_click", common);
+});
+
+$$('[data-enquiry-open]').forEach(trigger => trigger.addEventListener("click", () => {
+  trackEvent("enquiry_form_open", { button_text: linkLabel(trigger) });
+}));

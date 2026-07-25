@@ -1,7 +1,7 @@
-const CACHE = 'chitransh-v9-seo-20260725';
+const CACHE = 'chitransh-v10-ga4-20260725';
 const CORE = [
   './', './index.html', './manifest.json', './contact.vcf', './robots.txt', './sitemap.xml',
-  './assets/css/style.css?v=20260725-seo', './assets/js/script.js?v=20260725-seo',
+  './assets/css/style.css?v=20260725-seo', './assets/js/script.js?v=20260725-ga4',
   './assets/images/branding/logo.png', './assets/images/branding/hero.webp',
   './assets/images/founder/sharad-mathur.png',
   './assets/icons/icon-192.png', './assets/icons/icon-512.png'
