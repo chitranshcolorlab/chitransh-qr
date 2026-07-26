@@ -415,5 +415,33 @@ src="https://www.facebook.com/tr?id=1079691817955157&ev=PageView&noscript=1"
       </form>
     </div>
   </div>
+
+  <!-- Chitransh Meta Lead Tracking -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    function trackMetaLead(source) {
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead', {
+          content_name: source,
+          content_category: 'WhatsApp Enquiry'
+        });
+      }
+    }
+
+    document.querySelectorAll('a[href*="wa.me/"], a[href*="whatsapp.com/"]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        trackMetaLead('WhatsApp Click');
+      });
+    });
+
+    var enquiryForm = document.getElementById('enquiryForm');
+    if (enquiryForm) {
+      enquiryForm.addEventListener('submit', function () {
+        trackMetaLead('Website Enquiry Form');
+      });
+    }
+  });
+  </script>
+
 </body>
 </html>
