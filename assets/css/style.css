@@ -146,3 +146,11 @@ footer{border-top:1px solid rgba(215,180,90,.18);padding:62px 0 24px;background:
 .founder-signature span{display:block;margin-top:5px;color:#f2d58a;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
 .founder-quote{margin:25px 0;padding:20px 22px;border-left:2px solid var(--gold);background:rgba(215,180,90,.06);color:#e9dfc8;font-family:Georgia,serif;font-size:1.08rem;line-height:1.7}
 @media(max-width:700px){.hero-reel-label{right:14px;bottom:18px;font-size:.58rem}.founder-image img{min-height:430px}.founder-signature{left:20px;right:20px;bottom:18px}.founder-signature strong{font-size:1.5rem}}
+
+/* Premium Final Update — 2026-07-30 */
+.premium-location{display:flex;align-items:center;gap:9px;flex-wrap:wrap;font-size:clamp(1rem,2vw,1.18rem)!important;color:#f2d58a!important;margin-bottom:4px}
+.premium-location strong{font-family:Georgia,"Times New Roman",serif;font-weight:500;color:#fff}
+.premium-location span{color:#d7b45a}
+.local-address{font-size:.78rem!important;color:rgba(184,179,168,.72)!important;margin-top:4px;letter-spacing:.015em}
+.bridal-feature img{filter:saturate(.98) contrast(1.02)}
+@media(max-width:600px){.local-address{font-size:.7rem!important}.premium-location{gap:6px}}
